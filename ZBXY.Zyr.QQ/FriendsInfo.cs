@@ -37,7 +37,8 @@ namespace ZBXY.Zyr.QQ
         public string IPaddress1
         {
             get { return IPaddress; }
-            set { IPaddress = value; }
+            set { 
+                IPaddress = value; }
         }
        
     }
