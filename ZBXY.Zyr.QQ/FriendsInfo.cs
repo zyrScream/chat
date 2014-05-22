@@ -37,9 +37,15 @@ namespace ZBXY.Zyr.QQ
         public string IPaddress1
         {
             get { return IPaddress; }
-            set { 
-                IPaddress = value; }
+            set { IPaddress = value; }
         }
-       
+
+        private bool Ischat;
+
+        public bool Ischat1
+        {
+            get { return Ischat; }
+            set { Ischat = value; }
+        }
     }
 }

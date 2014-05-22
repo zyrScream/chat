@@ -16,5 +16,10 @@ namespace ZBXY.Zyr.QQ
         {
             InitializeComponent();
         }
+
+        private void FrmChat_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
     }
 }

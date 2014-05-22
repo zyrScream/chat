@@ -26,14 +26,36 @@ namespace ZBXY.Zyr.QQ
         public void addFriends(FriendsInfo friend)
         {
             UcFriends uf = new UcFriends();
-            uf.Name =friend.Name;
+            uf.Name = friend.Name;
             uf.Signatrue = friend.Signature;
-            int headindex=Convert.ToInt16(friend.Image);
+            int headindex = Convert.ToInt16(friend.Image);
             uf.Image = this.headImageindex.Images[headindex];
             uf.IPaddress1 = friend.IPaddress1;
             uf.Top = this.panelFriend.Controls.Count * uf.Height;
             uf.Left = 0;
             this.panelFriend.Controls.Add(uf);
+            uf.DoubleClick += uf_DoubleClick;
+        }
+
+        void uf_DoubleClick(object sender, EventArgs e)
+        {
+            FrmChat frmchat = new FrmChat();
+            UcFriends ucf=(UcFriends)sender;
+            int i=0;
+            for (i = 0; i < friendsInformationList.Count; i++)
+            {
+                if (friendsInformationList[i].IPaddress1 == ucf.IPaddress1)
+                {
+                    break;
+                }
+            }
+
+            if (friendsInformationList[i].Ischat1)
+            {
+                return;
+            }
+            frmchat.Show(friendsInformationList[i]);
+            friendsInformationList[i].Ischat1 = true;
         }
 
         public void createByfriendsInformationList()

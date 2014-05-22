@@ -39,6 +39,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmChat";
             this.Text = "FrmChat";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmChat_FormClosed);
             this.ResumeLayout(false);
 
         }

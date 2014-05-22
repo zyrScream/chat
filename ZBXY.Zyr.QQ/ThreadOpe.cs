@@ -81,9 +81,12 @@ namespace ZBXY.Zyr.QQ
                         object[] pars=new object[1];
                         pars[0]=friendInfo;
 
+                        _frm.friendsInformationList.Add(friendInfo);//在list中加
+
                         _frm.Invoke(new addFriends(_frm.addFriends),pars);//我接受并显示对方的信息
 
-                        _frm.friendsInformationList.Add(friendInfo);
+                        
+
                         IPAddress ip = ipEndpoint.Address;//取地址 
                         //IPHostEntry ipH = Dns.GetHostEntry(Dns.GetHostName());
                         //string myip = ipH.AddressList[4].ToString();
@@ -113,12 +116,12 @@ namespace ZBXY.Zyr.QQ
                         object[] pars1=new object[1];
                         pars1[0]=friendInfo1;
                         _frm.Invoke(new addFriends(_frm.addFriends),pars1);
+                        _frm.friendsInformationList.Add(friendInfo1);
                         break;
                     #endregion
 
                     #region LOGOUT
                     case "LOGOUT":
-                    #region 自己的方法
                         if (splitMessage.Length != 2)
                         {
                             continue;
@@ -142,7 +145,6 @@ namespace ZBXY.Zyr.QQ
                         _frm.Invoke(new createByfriendsInformationList(_frm.createByfriendsInformationList));
 
                         break;
-                    #endregion
 
 
                     #endregion
