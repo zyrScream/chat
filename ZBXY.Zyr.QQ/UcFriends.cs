@@ -12,6 +12,8 @@ namespace ZBXY.Zyr.QQ
 {
     public partial class UcFriends : UserControl
     {
+        public delegate void delShangji(Object o, EventArgs e);
+        public event delShangji shangji;
         public UcFriends()
         {
             InitializeComponent();
@@ -65,11 +67,37 @@ namespace ZBXY.Zyr.QQ
             }
         }
 
-       
-
         private void UcFriends_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void UcFriends_DoubleClick(object sender, EventArgs e)
+        {
+            this.shangji(sender, e);
+        }
+
+        private void picImage_DoubleClick(object sender, EventArgs e)
+        {
+            this.shangji(this, e);
+        }
+
+        private void lblName_DoubleClick(object sender, EventArgs e)
+        {
+            this.shangji(this, e);
+        }
+
+        private void lblSignatrue_DoubleClick(object sender, EventArgs e)
+        {
+            this.shangji(this, e);
+        }
+
+        private void lbladdress_DoubleClick(object sender, EventArgs e)
+        {
+            this.shangji(this, e);
+        }
+
+
+
     }
 }

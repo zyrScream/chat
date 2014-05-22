@@ -181,6 +181,15 @@ namespace ZBXY.Zyr.QQ
 
                     #endregion
 
+                    case"TEXT":
+                        if (splitMessage.Length != 2)
+                        {
+                            continue;
+                        }
+                        string Sendmessage = splitMessage[1];
+
+                        break;
+
                     default:
                         break;
                 }

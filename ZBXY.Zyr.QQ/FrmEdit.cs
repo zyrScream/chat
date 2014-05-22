@@ -29,7 +29,6 @@ namespace ZBXY.Zyr.QQ
         private void FrmEdit_Load(object sender, EventArgs e)
         {
             this.picImage.Tag = PublicConst.Me.Image;
-
             this.txtNickName.Text = PublicConst.Me.Nickname;
             this.txtSignature.Text = PublicConst.Me.Signature;
             int imageindex=Convert.ToInt32(PublicConst.Me.Image);

@@ -43,6 +43,7 @@
             this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.picImage.TabIndex = 0;
             this.picImage.TabStop = false;
+            this.picImage.Click += new System.EventHandler(this.picImage_DoubleClick);
             // 
             // lblName
             // 
@@ -53,6 +54,7 @@
             this.lblName.Size = new System.Drawing.Size(59, 22);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "label1";
+            this.lblName.DoubleClick += new System.EventHandler(this.lblName_DoubleClick);
             // 
             // lblSignatrue
             // 
@@ -63,6 +65,7 @@
             this.lblSignatrue.Size = new System.Drawing.Size(59, 22);
             this.lblSignatrue.TabIndex = 2;
             this.lblSignatrue.Text = "label2";
+            this.lblSignatrue.DoubleClick += new System.EventHandler(this.lblSignatrue_DoubleClick);
             // 
             // lbladdress
             // 
@@ -73,6 +76,7 @@
             this.lbladdress.Size = new System.Drawing.Size(59, 22);
             this.lbladdress.TabIndex = 3;
             this.lbladdress.Text = "label3";
+            this.lbladdress.DoubleClick += new System.EventHandler(this.lbladdress_DoubleClick);
             // 
             // UcFriends
             // 
@@ -85,6 +89,7 @@
             this.Name = "UcFriends";
             this.Size = new System.Drawing.Size(279, 80);
             this.Load += new System.EventHandler(this.UcFriends_Load);
+            this.DoubleClick += new System.EventHandler(this.UcFriends_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

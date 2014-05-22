@@ -34,14 +34,13 @@ namespace ZBXY.Zyr.QQ
             uf.Top = this.panelFriend.Controls.Count * uf.Height;
             uf.Left = 0;
             this.panelFriend.Controls.Add(uf);
-            uf.DoubleClick += uf_DoubleClick;
+            uf.shangji += uf_shangji;
         }
 
-        void uf_DoubleClick(object sender, EventArgs e)
+        void uf_shangji(object o, EventArgs e)
         {
-            FrmChat frmchat = new FrmChat();
-            UcFriends ucf=(UcFriends)sender;
-            int i=0;
+            UcFriends ucf = (UcFriends)o;
+            int i = 0;
             for (i = 0; i < friendsInformationList.Count; i++)
             {
                 if (friendsInformationList[i].IPaddress1 == ucf.IPaddress1)
@@ -54,7 +53,8 @@ namespace ZBXY.Zyr.QQ
             {
                 return;
             }
-            frmchat.Show(friendsInformationList[i]);
+            FrmChat frmchat = new FrmChat(friendsInformationList[i]);
+            frmchat.Show();
             friendsInformationList[i].Ischat1 = true;
         }
 
@@ -63,7 +63,7 @@ namespace ZBXY.Zyr.QQ
             this.panelFriend.Controls.Clear();
             foreach (FriendsInfo f in friendsInformationList)
             {
-                UcFriends ucf = new UcFriends();
+                UcFriends ucf= new UcFriends();
                 ucf.Name = f.Name;
                 ucf.Image = this.headImageindex.Images[Convert.ToInt32(f.Image)];
                 ucf.IPaddress1 = f.IPaddress1;
@@ -71,8 +71,11 @@ namespace ZBXY.Zyr.QQ
 
                 ucf.Top = this.panelFriend.Controls.Count * ucf.Height;
                 this.panelFriend.Controls.Add(ucf);
+                ucf.shangji += uf_shangji;
             }
         }
+
+
         //public void deleteFriends(FriendsInfo friend)
         //{
 
@@ -145,6 +148,7 @@ namespace ZBXY.Zyr.QQ
             thread.IsBackground = true;
             thread.Start();
             Thread.Sleep(200);
+
             UdpClient udpClient = new UdpClient();
             string message = "LOGON|"+PublicConst.Me.Nickname+"|"+PublicConst.Me.Image+"|"+PublicConst.Me.Signature;
             byte[] messageByte = Encoding.Default.GetBytes(message);
