@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.IO;
 
 namespace ZBXY.Zyr.QQ
 {
@@ -81,16 +82,20 @@ namespace ZBXY.Zyr.QQ
             _frm.lblSignature.Text = signature;
             //写回文件
 
-            string[] information={nickname,index.ToString(),signature};
+            //string[] information={nickname,index.ToString(),signature};
             string path = Application.StartupPath + @"\" + "setting.ini";
 
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
-            {
-                foreach (string info in information)
+            using(FileStream fs=new FileStream(path,FileMode.Create))
+                using (StreamWriter file = new StreamWriter(fs,Encoding.Default))
                 {
-                    file.WriteLine(info);
+                    //foreach (string info in information)
+                    //{
+                    //    file.WriteLine(info);
+                    //}
+                    file.WriteLine(nickname);
+                    file.WriteLine(index.ToString());
+                    file.WriteLine(signature);
                 }
-            }
 
             //通知其他成员
             UdpClient udpClient = new UdpClient();

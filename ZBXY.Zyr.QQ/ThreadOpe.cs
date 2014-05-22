@@ -76,6 +76,10 @@ namespace ZBXY.Zyr.QQ
                         FriendsInfo friendInfo= new FriendsInfo();
                         friendInfo.Name=splitMessage[1];
                         friendInfo.Image=splitMessage[2];
+                        if (Convert.ToInt32(friendInfo.Image) > 110 || Convert.ToInt32(friendInfo.Image) < 0)
+                        {
+                            continue;
+                        }
                         friendInfo.Signature=splitMessage[3];
                         friendInfo.IPaddress1 =ipEndpoint.Address.ToString();
                         object[] pars=new object[1];
@@ -110,6 +114,10 @@ namespace ZBXY.Zyr.QQ
                         }
                         FriendsInfo friendInfo1= new FriendsInfo();
                         friendInfo1.Name=splitMessage[1];
+                        if (Convert.ToInt32(friendInfo1.Image) > 110 || Convert.ToInt32(friendInfo1.Image) < 0)
+                        {
+                            continue;
+                        }
                         friendInfo1.Image=splitMessage[2];
                         friendInfo1.Signature=splitMessage[3];
                         friendInfo1.IPaddress1 = ipEndpoint.Address.ToString();
@@ -160,17 +168,21 @@ namespace ZBXY.Zyr.QQ
                         FriendsInfo FriendInfo = new FriendsInfo();
                         FriendInfo.Name = splitMessage[1];
                         FriendInfo.Image = splitMessage[2];
+                        if (Convert.ToInt32(FriendInfo.Image) > 110 || Convert.ToInt32(FriendInfo.Image) < 0)
+                        {
+                            continue;
+                        }
                         FriendInfo.Signature = splitMessage[3];
                         FriendInfo.IPaddress1 = ipEndpoint.Address.ToString();
 
                         int count = 0;
                         foreach (UcFriends ucf in _frm.panelFriend.Controls)
-                        { 
-                            if(ucf.IPaddress1==ipEndpoint.Address.ToString())
+                        {
+                            if (ucf.IPaddress1 == ipEndpoint.Address.ToString())
                             {
-                                ucf.Name= FriendInfo.Name;
+                                ucf.Name = FriendInfo.Name;
                                 ucf.Signatrue = FriendInfo.Signature;
-                                ucf.Image = _frm.headImageindex.Images[Convert.ToInt32 (FriendInfo.Image)];
+                                ucf.Image = _frm.headImageindex.Images[Convert.ToInt32(FriendInfo.Image)];
                                 ucf.IPaddress1 = FriendInfo.IPaddress1;
                                 break;
                             }
@@ -179,7 +191,7 @@ namespace ZBXY.Zyr.QQ
 
                         break;
 
-                    #endregion
+                   #endregion
 
                     case"TEXT":
                         if (splitMessage.Length != 2)
