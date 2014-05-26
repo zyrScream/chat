@@ -201,5 +201,23 @@ namespace ZBXY.Zyr.QQ
             frmedit.Show();
         }
 
+        private void Notify_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Visible = true;
+            this.WindowState = FormWindowState.Normal;
+            this.Notify.Visible = false;
+        }
+
+        private void ZyrQQ_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                this.Notify.Visible = true;
+            }
+        }
+
+  
+
     }
 }

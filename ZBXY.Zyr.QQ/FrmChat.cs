@@ -39,9 +39,8 @@ namespace ZBXY.Zyr.QQ
             this.Text = _friendInfo.Name;
             for (int indexinMessage = 0; indexinMessage < _friendInfo.Sendmessage.Count; indexinMessage++)
             {
-                this.txtChat.Text += _friendInfo.Name+"："+System.DateTime.Now.ToShortTimeString()+"\r\n"+_friendInfo.Sendmessage[indexinMessage]+"\r\n";
+                this.txtChat.Text += _friendInfo.Name+":"+System.DateTime.Now.ToShortTimeString()+"\r\n"+_friendInfo.Sendmessage[indexinMessage]+"\r\n";
             }
-            _friendInfo.Sendmessage = null;
         }
 
         private void btnSend_Click(object sender, EventArgs e)

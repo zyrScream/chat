@@ -175,7 +175,7 @@ namespace ZBXY.Zyr.QQ
                         }
                         FriendInfo.Signature = splitMessage[3];
                         FriendInfo.IPaddress1 = ipEndpoint.Address.ToString();
-
+                        
                         int count = 0;
                         foreach (UcFriends ucf in _frm.panelFriend.Controls)
                         {
@@ -208,7 +208,7 @@ namespace ZBXY.Zyr.QQ
                             {
                                 if (_frm.friendsInformationList[listindex].Ischat1 == true)
                                 {
-                                    _frm.friendsInformationList[listindex].Frmchat.txtChat.Text += _frm.friendsInformationList[listindex] .Name+":"+System.DateTime.Now.ToShortTimeString()+ Sendmessage+"\r\n";
+                                    _frm.friendsInformationList[listindex].Frmchat.txtChat.Text += _frm.friendsInformationList[listindex] .Name+":"+System.DateTime.Now.ToShortTimeString()+"\r\n"+ Sendmessage+"\r\n";
                                 }
                                 else 
                                 {
@@ -218,14 +218,19 @@ namespace ZBXY.Zyr.QQ
                                     object[] ucpars=new object[1];
                                     ucpars[0] = _frm.panelFriend.Controls[listindex];
                                     _frm.Invoke(new delflash(_frm.startTimer),ucpars);
+                                    
                                 }
-                               
                             }
                         }
 
                             break;
 
                     #endregion
+
+                    case"JOIN":
+                           
+                            
+                            break;
                     default:
                         break;
                 }

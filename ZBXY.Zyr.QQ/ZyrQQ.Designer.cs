@@ -35,6 +35,7 @@
             this.lblSignature = new System.Windows.Forms.Label();
             this.panelFriend = new System.Windows.Forms.Panel();
             this.headImageindex = new System.Windows.Forms.ImageList(this.components);
+            this.Notify = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picLogin)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,9 +72,9 @@
             // 
             this.panelFriend.AutoScroll = true;
             this.panelFriend.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelFriend.Location = new System.Drawing.Point(10, 95);
+            this.panelFriend.Location = new System.Drawing.Point(3, 95);
             this.panelFriend.Name = "panelFriend";
-            this.panelFriend.Size = new System.Drawing.Size(292, 570);
+            this.panelFriend.Size = new System.Drawing.Size(299, 585);
             this.panelFriend.TabIndex = 3;
             // 
             // headImageindex
@@ -191,6 +192,13 @@
             this.headImageindex.Images.SetKeyName(108, "267.jpg");
             this.headImageindex.Images.SetKeyName(109, "412.jpg");
             // 
+            // Notify
+            // 
+            this.Notify.Icon = ((System.Drawing.Icon)(resources.GetObject("Notify.Icon")));
+            this.Notify.Text = "Notify";
+            this.Notify.Visible = true;
+            this.Notify.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Notify_MouseDoubleClick);
+            // 
             // ZyrQQ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -203,9 +211,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ZyrQQ";
+            this.ShowInTaskbar = false;
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ZyrQQ_FormClosing);
             this.Load += new System.EventHandler(this.ZyrQQ_Load);
+            this.Resize += new System.EventHandler(this.ZyrQQ_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.picLogin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -219,6 +229,7 @@
         public System.Windows.Forms.Label lblSignature;
         public System.Windows.Forms.Panel panelFriend;
         public System.Windows.Forms.ImageList headImageindex;
+        public System.Windows.Forms.NotifyIcon Notify;
     }
 }
 

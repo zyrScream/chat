@@ -52,7 +52,7 @@
             this.txtChat.Multiline = true;
             this.txtChat.Name = "txtChat";
             this.txtChat.ReadOnly = true;
-            this.txtChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtChat.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtChat.Size = new System.Drawing.Size(251, 302);
             this.txtChat.TabIndex = 1;
             // 
