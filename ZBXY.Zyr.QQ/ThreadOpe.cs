@@ -14,6 +14,7 @@ namespace ZBXY.Zyr.QQ
         public delegate void addFriends(FriendsInfo friendInfo);
         //public delegate void deleteFriends(FriendsInfo friendInfo); 
         public delegate void createByfriendsInformationList();
+        public delegate void delflash(UcFriends startTimer);
         private ZyrQQ _frm;
 
         public ThreadOpe()
@@ -193,15 +194,38 @@ namespace ZBXY.Zyr.QQ
 
                    #endregion
 
-                    case"TEXT":
+                    #region TEXT
+                    case "TEXT":
                         if (splitMessage.Length != 2)
                         {
                             continue;
                         }
+
                         string Sendmessage = splitMessage[1];
+                        for (int listindex = 0; listindex < _frm.friendsInformationList.Count; listindex++)
+                        {
+                            if (ipEndpoint.Address.ToString() == _frm.friendsInformationList[listindex].IPaddress1)
+                            {
+                                if (_frm.friendsInformationList[listindex].Ischat1 == true)
+                                {
+                                    _frm.friendsInformationList[listindex].Frmchat.txtChat.Text += _frm.friendsInformationList[listindex] .Name+":"+System.DateTime.Now.ToShortTimeString()+ Sendmessage+"\r\n";
+                                }
+                                else 
+                                {
+                                    _frm.friendsInformationList[listindex].Sendmessage.Add(Sendmessage);
+                                    _frm.ucChangecolor(ipEndpoint.Address.ToString());
+                                    //UcFriends uc = (UcFriends)_frm.panelFriend.Controls[listindex];
+                                    object[] ucpars=new object[1];
+                                    ucpars[0] = _frm.panelFriend.Controls[listindex];
+                                    _frm.Invoke(new delflash(_frm.startTimer),ucpars);
+                                }
+                               
+                            }
+                        }
 
-                        break;
+                            break;
 
+                    #endregion
                     default:
                         break;
                 }

@@ -47,5 +47,21 @@ namespace ZBXY.Zyr.QQ
             get { return Ischat; }
             set { Ischat = value; }
         }
+
+        private FrmChat frmchat=new FrmChat();
+
+        public FrmChat Frmchat
+        {
+            get { return frmchat; }
+            set { frmchat = value; }
+        }
+
+        private List<string> sendmessage=new List<string>();
+
+        public List<string> Sendmessage
+        {
+            get { return sendmessage; }
+            set { sendmessage = value; }
+        }
     }
 }

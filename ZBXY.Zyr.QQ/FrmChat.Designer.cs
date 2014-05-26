@@ -32,6 +32,7 @@
             this.txtChat = new System.Windows.Forms.TextBox();
             this.txtSend = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnoQuit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSend
@@ -50,6 +51,8 @@
             this.txtChat.Location = new System.Drawing.Point(12, 12);
             this.txtChat.Multiline = true;
             this.txtChat.Name = "txtChat";
+            this.txtChat.ReadOnly = true;
+            this.txtChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtChat.Size = new System.Drawing.Size(251, 302);
             this.txtChat.TabIndex = 1;
             // 
@@ -59,6 +62,7 @@
             this.txtSend.Location = new System.Drawing.Point(12, 340);
             this.txtSend.Multiline = true;
             this.txtSend.Name = "txtSend";
+            this.txtSend.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtSend.Size = new System.Drawing.Size(251, 51);
             this.txtSend.TabIndex = 2;
             // 
@@ -72,11 +76,22 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "输入文字：";
             // 
+            // btnoQuit
+            // 
+            this.btnoQuit.Location = new System.Drawing.Point(188, 408);
+            this.btnoQuit.Name = "btnoQuit";
+            this.btnoQuit.Size = new System.Drawing.Size(75, 23);
+            this.btnoQuit.TabIndex = 4;
+            this.btnoQuit.Text = "取消";
+            this.btnoQuit.UseVisualStyleBackColor = true;
+            this.btnoQuit.Click += new System.EventHandler(this.btnoQuit_Click);
+            // 
             // FrmChat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(275, 443);
+            this.Controls.Add(this.btnoQuit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSend);
             this.Controls.Add(this.txtChat);
@@ -95,8 +110,9 @@
         #endregion
 
         private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.TextBox txtChat;
+        public  System.Windows.Forms.TextBox txtChat;
         private System.Windows.Forms.TextBox txtSend;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnoQuit;
     }
 }

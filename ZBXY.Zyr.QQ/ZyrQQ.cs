@@ -11,6 +11,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.IO;
+using System.Timers;
 
 namespace ZBXY.Zyr.QQ
 {
@@ -23,9 +24,29 @@ namespace ZBXY.Zyr.QQ
             InitializeComponent();
         }
 
+        public void ucChangecolor(string ip)
+        {
+            int num=0;
+            while (num < panelFriend.Controls.Count)
+            {
+                UcFriends uf = (UcFriends)panelFriend.Controls[num];
+                if (uf.IPaddress1 == ip)
+                {
+                    uf.BackColor = System.Drawing.Color.Red;
+                }
+                num++;
+            }
+        }
+
+        public void startTimer(UcFriends uc)
+        {
+            uc.startFlash();
+        }
+
         public void addFriends(FriendsInfo friend)
         {
             UcFriends uf = new UcFriends();
+
             uf.Name = friend.Name;
             uf.Signatrue = friend.Signature;
             int headindex = Convert.ToInt16(friend.Image);
@@ -40,6 +61,8 @@ namespace ZBXY.Zyr.QQ
         void uf_shangji(object o, EventArgs e)
         {
             UcFriends ucf = (UcFriends)o;
+            ucf.BackColor = System.Drawing.SystemColors.Control;
+            ucf.stopFlash();
             int i = 0;
             for (i = 0; i < friendsInformationList.Count; i++)
             {
@@ -49,12 +72,14 @@ namespace ZBXY.Zyr.QQ
                 }
             }
 
+            FrmChat frmchat = new FrmChat(friendsInformationList[i]);
             if (friendsInformationList[i].Ischat1)
             {
                 return;
             }
-            FrmChat frmchat = new FrmChat(friendsInformationList[i]);
-            frmchat.Show();
+            
+            friendsInformationList[i].Frmchat = frmchat;
+            friendsInformationList[i].Frmchat.Show();
             friendsInformationList[i].Ischat1 = true;
         }
 
@@ -63,7 +88,13 @@ namespace ZBXY.Zyr.QQ
             this.panelFriend.Controls.Clear();
             foreach (FriendsInfo f in friendsInformationList)
             {
-                UcFriends ucf= new UcFriends();
+                UcFriends ucf = new UcFriends();
+
+                if (f.Sendmessage.Count > 0)
+                {
+                    ucf.BackColor = System.Drawing.Color.Red;
+                }
+
                 ucf.Name = f.Name;
                 ucf.Image = this.headImageindex.Images[Convert.ToInt32(f.Image)];
                 ucf.IPaddress1 = f.IPaddress1;
@@ -74,7 +105,6 @@ namespace ZBXY.Zyr.QQ
                 ucf.shangji += uf_shangji;
             }
         }
-
 
         //public void deleteFriends(FriendsInfo friend)
         //{

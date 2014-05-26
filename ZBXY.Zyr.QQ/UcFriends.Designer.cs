@@ -28,16 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.picImage = new System.Windows.Forms.PictureBox();
             this.lblName = new System.Windows.Forms.Label();
             this.lblSignatrue = new System.Windows.Forms.Label();
             this.lbladdress = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.SuspendLayout();
             // 
             // picImage
             // 
-            this.picImage.Location = new System.Drawing.Point(0, 0);
+            this.picImage.Location = new System.Drawing.Point(5, 5);
             this.picImage.Name = "picImage";
             this.picImage.Size = new System.Drawing.Size(80, 80);
             this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -78,6 +80,11 @@
             this.lbladdress.Text = "label3";
             this.lbladdress.DoubleClick += new System.EventHandler(this.lbladdress_DoubleClick);
             // 
+            // timer
+            // 
+            this.timer.Interval = 200;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // UcFriends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -87,7 +94,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.picImage);
             this.Name = "UcFriends";
-            this.Size = new System.Drawing.Size(279, 80);
+            this.Size = new System.Drawing.Size(279, 90);
             this.Load += new System.EventHandler(this.UcFriends_Load);
             this.DoubleClick += new System.EventHandler(this.UcFriends_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
@@ -98,9 +105,10 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox picImage;
+        public System.Windows.Forms.PictureBox picImage;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblSignatrue;
         private System.Windows.Forms.Label lbladdress;
+        private System.Windows.Forms.Timer timer;
     }
 }

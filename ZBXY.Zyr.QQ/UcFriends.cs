@@ -72,6 +72,16 @@ namespace ZBXY.Zyr.QQ
 
         }
 
+        public void startFlash()
+        {
+            this.timer.Enabled = true;
+        }
+
+        public void stopFlash()
+        {
+            this.timer.Enabled = false;
+        }
+
         private void UcFriends_DoubleClick(object sender, EventArgs e)
         {
             this.shangji(sender, e);
@@ -95,6 +105,40 @@ namespace ZBXY.Zyr.QQ
         private void lbladdress_DoubleClick(object sender, EventArgs e)
         {
             this.shangji(this, e);
+        }
+
+        private int locationFlag=0;
+        private void timer_Tick(object sender, EventArgs e)
+        {
+         
+            if (locationFlag == 0)
+            {
+                this.picImage.Left = 6;
+                this.picImage.Top = 5;
+            }
+
+            if (locationFlag == 1)
+            {
+                this.picImage.Left = 5;
+                this.picImage.Top = 6;
+            }
+
+            if (locationFlag == 2)
+            {
+                this.picImage.Left = 4;
+                this.picImage.Top = 5;
+            }
+
+            if (locationFlag == 3)
+            {
+                this.picImage.Left = 5;
+                this.picImage.Top = 4;
+            }
+            locationFlag++;
+            if (locationFlag == 4)
+            {
+                locationFlag = 0;
+            }
         }
 
 
