@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnSend = new System.Windows.Forms.Button();
             this.txtChat = new System.Windows.Forms.TextBox();
             this.txtSend = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnoQuit = new System.Windows.Forms.Button();
+            this.btnRefuseMessage = new System.Windows.Forms.Button();
+            this.btnReceiveMessage = new System.Windows.Forms.Button();
+            this.btnShake = new System.Windows.Forms.Button();
+            this.tShake = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(102, 408);
+            this.btnSend.Location = new System.Drawing.Point(188, 437);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 0;
@@ -78,7 +83,7 @@
             // 
             // btnoQuit
             // 
-            this.btnoQuit.Location = new System.Drawing.Point(188, 408);
+            this.btnoQuit.Location = new System.Drawing.Point(95, 437);
             this.btnoQuit.Name = "btnoQuit";
             this.btnoQuit.Size = new System.Drawing.Size(75, 23);
             this.btnoQuit.TabIndex = 4;
@@ -86,11 +91,49 @@
             this.btnoQuit.UseVisualStyleBackColor = true;
             this.btnoQuit.Click += new System.EventHandler(this.btnoQuit_Click);
             // 
+            // btnRefuseMessage
+            // 
+            this.btnRefuseMessage.Location = new System.Drawing.Point(14, 408);
+            this.btnRefuseMessage.Name = "btnRefuseMessage";
+            this.btnRefuseMessage.Size = new System.Drawing.Size(75, 23);
+            this.btnRefuseMessage.TabIndex = 5;
+            this.btnRefuseMessage.Text = "拒收信息";
+            this.btnRefuseMessage.UseVisualStyleBackColor = true;
+            this.btnRefuseMessage.Click += new System.EventHandler(this.btnRefuseMessage_Click);
+            // 
+            // btnReceiveMessage
+            // 
+            this.btnReceiveMessage.Location = new System.Drawing.Point(95, 408);
+            this.btnReceiveMessage.Name = "btnReceiveMessage";
+            this.btnReceiveMessage.Size = new System.Drawing.Size(75, 23);
+            this.btnReceiveMessage.TabIndex = 5;
+            this.btnReceiveMessage.Text = "接受信息";
+            this.btnReceiveMessage.UseVisualStyleBackColor = true;
+            this.btnReceiveMessage.Click += new System.EventHandler(this.btnReceiveMessage_Click);
+            // 
+            // btnShake
+            // 
+            this.btnShake.Location = new System.Drawing.Point(188, 408);
+            this.btnShake.Name = "btnShake";
+            this.btnShake.Size = new System.Drawing.Size(75, 23);
+            this.btnShake.TabIndex = 5;
+            this.btnShake.Text = "抖动";
+            this.btnShake.UseVisualStyleBackColor = true;
+            this.btnShake.Click += new System.EventHandler(this.btnShake_Click);
+            // 
+            // tShake
+            // 
+            this.tShake.Interval = 200;
+            this.tShake.Tick += new System.EventHandler(this.tShake_Tick);
+            // 
             // FrmChat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(275, 443);
+            this.ClientSize = new System.Drawing.Size(275, 463);
+            this.Controls.Add(this.btnShake);
+            this.Controls.Add(this.btnReceiveMessage);
+            this.Controls.Add(this.btnRefuseMessage);
             this.Controls.Add(this.btnoQuit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSend);
@@ -114,5 +157,9 @@
         private System.Windows.Forms.TextBox txtSend;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnoQuit;
+        private System.Windows.Forms.Button btnRefuseMessage;
+        private System.Windows.Forms.Button btnReceiveMessage;
+        private System.Windows.Forms.Button btnShake;
+        private System.Windows.Forms.Timer tShake;
     }
 }

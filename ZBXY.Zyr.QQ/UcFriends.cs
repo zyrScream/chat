@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ZBXY.Zyr.QQ
 {
@@ -14,6 +15,19 @@ namespace ZBXY.Zyr.QQ
     {
         public delegate void delShangji(Object o, EventArgs e);
         public event delShangji shangji;
+
+        private string description;
+
+        public string Description
+        {
+          get { return description; }
+          set 
+          { 
+              description = value;
+              this.lblDescription.Text = description;
+          }
+        }
+
         public UcFriends()
         {
             InitializeComponent();
@@ -69,7 +83,8 @@ namespace ZBXY.Zyr.QQ
 
         private void UcFriends_Load(object sender, EventArgs e)
         {
-
+            //string dpath = Application.StartupPath + @"\好友备注\" + this.IPaddress1 + ".ini";
+            
         }
 
         public void startFlash()
@@ -141,6 +156,53 @@ namespace ZBXY.Zyr.QQ
             }
         }
 
+        public void changdescription()
+        {
+            lblDescription.Text = description;
+        }
+
+        private void lblDescription_Click(object sender, EventArgs e)
+        {
+            FrmDescription fd = new FrmDescription(this);
+            fd.Show();
+        }
+
+        private void UcFriends_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                this.cmLeft.Show(Cursor.Position.X,Cursor.Position.Y);
+            }
+        }
+
+        private void tsmDescription_Click(object sender, EventArgs e)
+        {
+            FrmDescription fd = new FrmDescription(this);
+            fd.Show();
+        }
+
+        private void tsmSend_Click(object sender, EventArgs e)
+        {
+            FriendsInfo fi = new FriendsInfo();
+            fi.IPaddress1 = this.IPaddress;
+            fi.Name = this.Name;
+            fi.Signature = this.signatrue;
+            FrmChat fmc = new FrmChat(fi);
+            fmc.Show();
+        }
+
+        private void tsmShield_Click(object sender, EventArgs e)
+        {
+            string filepath = Application.StartupPath + @"\屏蔽好友信息\" + this.IPaddress1 + ".ini";
+
+            using (FileStream myFs = new FileStream(filepath, FileMode.Create))
+            {
+                using (StreamWriter mySw = new StreamWriter(myFs, Encoding.Default))
+                {
+                    mySw.WriteLine("true");
+                }
+            }
+        }
 
 
     }

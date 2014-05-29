@@ -45,17 +45,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FriendsInfo.cs" />
+    <Compile Include="FrmBoradcast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBoradcast.Designer.cs">
+      <DependentUpon>FrmBoradcast.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmChat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmChat.Designer.cs">
       <DependentUpon>FrmChat.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmChatroom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChatroom.Designer.cs">
+      <DependentUpon>FrmChatroom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDescription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDescription.Designer.cs">
+      <DependentUpon>FrmDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmEdit.Designer.cs">
       <DependentUpon>FrmEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogout.Designer.cs">
+      <DependentUpon>FrmLogout.cs</DependentUpon>
     </Compile>
     <Compile Include="MyInfo.cs" />
     <Compile Include="PublicConst.cs" />
@@ -74,11 +98,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBoradcast.resx">
+      <DependentUpon>FrmBoradcast.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmChat.resx">
       <DependentUpon>FrmChat.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmChatroom.resx">
+      <DependentUpon>FrmChatroom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDescription.resx">
+      <DependentUpon>FrmDescription.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEdit.resx">
       <DependentUpon>FrmEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogout.resx">
+      <DependentUpon>FrmLogout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -35,7 +35,10 @@
             this.lblSignature = new System.Windows.Forms.Label();
             this.panelFriend = new System.Windows.Forms.Panel();
             this.headImageindex = new System.Windows.Forms.ImageList(this.components);
-            this.Notify = new System.Windows.Forms.NotifyIcon(this.components);
+            this.btnJoinChatroom = new System.Windows.Forms.Button();
+            this.btnBroadcast = new System.Windows.Forms.Button();
+            this.combFriend = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLogin)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +77,7 @@
             this.panelFriend.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelFriend.Location = new System.Drawing.Point(3, 95);
             this.panelFriend.Name = "panelFriend";
-            this.panelFriend.Size = new System.Drawing.Size(299, 585);
+            this.panelFriend.Size = new System.Drawing.Size(299, 431);
             this.panelFriend.TabIndex = 3;
             // 
             // headImageindex
@@ -192,18 +195,52 @@
             this.headImageindex.Images.SetKeyName(108, "267.jpg");
             this.headImageindex.Images.SetKeyName(109, "412.jpg");
             // 
-            // Notify
+            // btnJoinChatroom
             // 
-            this.Notify.Icon = ((System.Drawing.Icon)(resources.GetObject("Notify.Icon")));
-            this.Notify.Text = "Notify";
-            this.Notify.Visible = true;
-            this.Notify.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Notify_MouseDoubleClick);
+            this.btnJoinChatroom.Location = new System.Drawing.Point(10, 566);
+            this.btnJoinChatroom.Name = "btnJoinChatroom";
+            this.btnJoinChatroom.Size = new System.Drawing.Size(75, 35);
+            this.btnJoinChatroom.TabIndex = 4;
+            this.btnJoinChatroom.Text = "聊天室";
+            this.btnJoinChatroom.UseVisualStyleBackColor = true;
+            this.btnJoinChatroom.Click += new System.EventHandler(this.btnJoinChatroom_Click);
+            // 
+            // btnBroadcast
+            // 
+            this.btnBroadcast.Location = new System.Drawing.Point(91, 566);
+            this.btnBroadcast.Name = "btnBroadcast";
+            this.btnBroadcast.Size = new System.Drawing.Size(75, 35);
+            this.btnBroadcast.TabIndex = 4;
+            this.btnBroadcast.Text = "广播";
+            this.btnBroadcast.UseVisualStyleBackColor = true;
+            this.btnBroadcast.Click += new System.EventHandler(this.btnBroadcast_Click);
+            // 
+            // combFriend
+            // 
+            this.combFriend.FormattingEnabled = true;
+            this.combFriend.Location = new System.Drawing.Point(181, 574);
+            this.combFriend.Name = "combFriend";
+            this.combFriend.Size = new System.Drawing.Size(121, 20);
+            this.combFriend.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(179, 546);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "最近联系人";
             // 
             // ZyrQQ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(307, 695);
+            this.ClientSize = new System.Drawing.Size(307, 603);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.combFriend);
+            this.Controls.Add(this.btnBroadcast);
+            this.Controls.Add(this.btnJoinChatroom);
             this.Controls.Add(this.panelFriend);
             this.Controls.Add(this.lblSignature);
             this.Controls.Add(this.lblName);
@@ -215,7 +252,6 @@
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ZyrQQ_FormClosing);
             this.Load += new System.EventHandler(this.ZyrQQ_Load);
-            this.Resize += new System.EventHandler(this.ZyrQQ_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.picLogin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -229,7 +265,10 @@
         public System.Windows.Forms.Label lblSignature;
         public System.Windows.Forms.Panel panelFriend;
         public System.Windows.Forms.ImageList headImageindex;
-        public System.Windows.Forms.NotifyIcon Notify;
+        private System.Windows.Forms.Button btnJoinChatroom;
+        private System.Windows.Forms.Button btnBroadcast;
+        private System.Windows.Forms.ComboBox combFriend;
+        private System.Windows.Forms.Label label1;
     }
 }
 

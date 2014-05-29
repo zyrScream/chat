@@ -18,7 +18,11 @@ namespace ZBXY.Zyr.QQ
     public partial class ZyrQQ : Form
     {
         public List<FriendsInfo> friendsInformationList=new List<FriendsInfo>();
-        
+        public List<FriendsInfo> ChatroomFriends = new List<FriendsInfo>();
+        public bool MyinChatroom;
+        public bool FrmchatisExist;
+        public FrmChatroom frmchatroom=new FrmChatroom();
+
         public ZyrQQ()
         {
             InitializeComponent();
@@ -54,6 +58,16 @@ namespace ZBXY.Zyr.QQ
             uf.IPaddress1 = friend.IPaddress1;
             uf.Top = this.panelFriend.Controls.Count * uf.Height;
             uf.Left = 0;
+            //uf.Description = ucDescription;
+
+            string description;
+            string dpath = Application.StartupPath + @"\好友备注\" + uf.IPaddress1+ ".ini";
+            using (StreamReader sr = new StreamReader(dpath, Encoding.Default))
+            {
+                description = sr.ReadLine();
+            }
+
+            uf.Description = description;
             this.panelFriend.Controls.Add(uf);
             uf.shangji += uf_shangji;
         }
@@ -68,11 +82,12 @@ namespace ZBXY.Zyr.QQ
             {
                 if (friendsInformationList[i].IPaddress1 == ucf.IPaddress1)
                 {
+                    this.combFriend.Items.Add(friendsInformationList[i].Name);
                     break;
                 }
             }
 
-            FrmChat frmchat = new FrmChat(friendsInformationList[i]);
+            FrmChat frmchat = new FrmChat(friendsInformationList[i],this);
             if (friendsInformationList[i].Ischat1)
             {
                 return;
@@ -83,8 +98,11 @@ namespace ZBXY.Zyr.QQ
             friendsInformationList[i].Ischat1 = true;
         }
 
-        public void createByfriendsInformationList()
+        public void createByfriendsInformationList(FriendsInfo fi)
         {
+            FrmLogout fl = new FrmLogout(this,fi);
+            fl.Show();
+
             this.panelFriend.Controls.Clear();
             foreach (FriendsInfo f in friendsInformationList)
             {
@@ -99,7 +117,14 @@ namespace ZBXY.Zyr.QQ
                 ucf.Image = this.headImageindex.Images[Convert.ToInt32(f.Image)];
                 ucf.IPaddress1 = f.IPaddress1;
                 ucf.Signatrue = f.Signature;
-
+                //ucf.Description = ucDescription;
+                string description;
+                string dpath = Application.StartupPath + @"\好友备注\" + f.IPaddress1+ ".ini";
+                using (StreamReader sr = new StreamReader(dpath, Encoding.Default))
+                {
+                    description = sr.ReadLine();
+                }
+                ucf.Description = description;
                 ucf.Top = this.panelFriend.Controls.Count * ucf.Height;
                 this.panelFriend.Controls.Add(ucf);
                 ucf.shangji += uf_shangji;
@@ -139,11 +164,11 @@ namespace ZBXY.Zyr.QQ
                 string Image = sr.ReadLine();
                 string Signature = sr.ReadLine();
 
-                if (Nickname != null)
+                if (Nickname != "")
                 {
                     myinfo.Nickname = Nickname;
                 }
-                if (Image != null)
+                if (Image != "")
                 {
                     myinfo.Image = Image;
                 }
@@ -152,7 +177,7 @@ namespace ZBXY.Zyr.QQ
                 {
                     myinfo.Image = "0";
                 }
-                if (Signature != null)
+                if (Signature != "")
                 {
                     myinfo.Signature = Signature;
                 }
@@ -200,24 +225,45 @@ namespace ZBXY.Zyr.QQ
             FrmEdit frmedit = new FrmEdit(this);
             frmedit.Show();
         }
-
-        private void Notify_MouseDoubleClick(object sender, MouseEventArgs e)
+        
+        private void btnJoinChatroom_Click(object sender, EventArgs e)
         {
-            this.Visible = true;
-            this.WindowState = FormWindowState.Normal;
-            this.Notify.Visible = false;
-        }
-
-        private void ZyrQQ_Resize(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Minimized)
+            if (FrmchatisExist)
             {
-                this.Hide();
-                this.Notify.Visible = true;
+                return; 
             }
+            if (MyinChatroom)
+            {
+                return;
+            }
+            MyinChatroom = true;
+
+            UdpClient udpClient = new UdpClient();
+            string message = "JOIN|" + PublicConst.Me.Nickname + "|" + PublicConst.Me.Image + "|" + PublicConst.Me.Signature;
+            byte[] messageByte = Encoding.Default.GetBytes(message);
+            IPEndPoint ipEndpoint = new IPEndPoint(IPAddress.Parse("255.255.255.255"), 9527);
+            udpClient.Send(messageByte, messageByte.Length, ipEndpoint);
+
+            FrmChatroom Frmchatroom = new FrmChatroom(this);
+            frmchatroom = Frmchatroom;
+            frmchatroom.Show();
+
+            FrmchatisExist = true;
+
         }
 
-  
+        private void btnBroadcast_Click(object sender, EventArgs e)
+        {
+            FrmBoradcast fb = new FrmBoradcast();
+            fb.Show();
+        }
 
+        public void openShake(FriendsInfo fi)
+        {
+            //fi.Frmchat.shake();
+            FrmChat frmchat = new FrmChat(fi, this);
+            frmchat.shake();
+            frmchat.Show();
+        }
     }
 }
